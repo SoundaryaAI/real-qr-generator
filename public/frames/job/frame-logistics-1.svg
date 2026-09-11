@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#ecf0f3"/>
+  <g>
+    <g transform="translate(60,200)">
+      <path d="M220 240 H750 L820 330 V620 C820 700 760 760 680 760 H260 C180 760 120 700 120 620 V330 L220 240Z" fill="#b5bec8" stroke="#293548" stroke-width="18"/>
+      <path d="M220 240 H600 V330 H220Z" fill="#d5dbe1"/>
+      <path d="M630 240 L820 330 V620 H630Z" fill="#a5afb8"/>
+      <rect x="300" y="340" width="380" height="190" rx="12" fill="#eff4f7" stroke="#293548" stroke-width="12"/>
+      <circle cx="260" cy="770" r="72" fill="#a9b1b8" stroke="#293548" stroke-width="18"/>
+      <circle cx="670" cy="770" r="72" fill="#a9b1b8" stroke="#293548" stroke-width="18"/>
+      <circle cx="260" cy="770" r="30" fill="#f0f5f7" stroke="#293548" stroke-width="10"/>
+      <circle cx="670" cy="770" r="30" fill="#f0f5f7" stroke="#293548" stroke-width="10"/>
+      <path d="M240 430 H720" stroke="#293548" stroke-width="10" stroke-linecap="round"/>
+      <path d="M240 500 H680" stroke="#293548" stroke-width="10" stroke-linecap="round"/>
+      <path d="M120 320 H220" stroke="#293548" stroke-width="14" stroke-linecap="round"/>
+      <path d="M180 290 H240" stroke="#293548" stroke-width="14" stroke-linecap="round"/>
+    </g>
+  </g>
+  <text x="600" y="1080" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="700" fill="#26344a" letter-spacing="3">LOGISTICS</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#f0ebdf"/>
+  <g>
+    <rect x="155" y="165" width="890" height="900" rx="18" fill="#d6c2a0" stroke="#2d2a27" stroke-width="16"/>
+    <rect x="300" y="290" width="600" height="500" rx="12" fill="#f8f4ee" stroke="#2d2a27" stroke-width="12"/>
+    <g fill="#5a7b48" stroke="#2d2a27" stroke-width="5">
+      <path d="M430 440 C370 440, 340 480, 340 520 C340 565, 380 600, 430 600 C470 600, 510 570, 510 520 C510 480, 465 440, 430 440 Z"/>
+      <path d="M730 440 C670 440, 640 480, 640 520 C640 565, 680 600, 730 600 C770 600, 810 570, 810 520 C810 480, 765 440, 730 440 Z"/>
+      <path d="M510 560 C500 610, 490 650, 450 690 C430 710, 440 760, 470 760 H550 C590 760, 600 700, 580 660 C560 620, 540 590, 510 560 Z"/>
+      <path d="M690 560 C700 610, 710 650, 750 690 C770 710, 760 760, 730 760 H650 C610 760, 600 700, 620 660 C640 620, 660 590, 690 560 Z"/>
+    </g>
+    <g fill="#e9d8ad" stroke="#2d2a27" stroke-width="5">
+      <ellipse cx="445" cy="750" rx="42" ry="24"/>
+      <ellipse cx="755" cy="750" rx="42" ry="24"/>
+      <ellipse cx="600" cy="780" rx="56" ry="28"/>
+    </g>
+  </g>
+  <text x="600" y="1090" text-anchor="middle" font-family="Arial, sans-serif" font-size="68" font-weight="700" fill="#2d2a27" letter-spacing="3">FARM-TO-TABLE</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#f6efe8"/>
+  <g>
+    <rect x="150" y="160" width="900" height="900" rx="32" fill="#d7b78b" stroke="#1f2937" stroke-width="16"/>
+    <rect x="260" y="260" width="680" height="620" rx="18" fill="#fffaf6" stroke="#1f2937" stroke-width="10"/>
+    <g fill="none" stroke="#1f2937" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M410 535 C450 470, 520 430, 600 430 C680 430, 750 470, 790 535"/>
+      <path d="M360 610 C420 560, 500 530, 600 530 C700 530, 780 560, 840 610"/>
+      <path d="M330 690 C430 635, 520 610, 600 610 C680 610, 770 635, 870 690"/>
+      <path d="M505 470 L600 300 L695 470"/>
+      <path d="M600 300 L600 730"/>
+    </g>
+    <g fill="#a1693c">
+      <circle cx="410" cy="535" r="27"/>
+      <circle cx="600" cy="430" r="27"/>
+      <circle cx="790" cy="535" r="27"/>
+      <circle cx="600" cy="710" r="27"/>
+    </g>
+    <g fill="#d5482f">
+      <path d="M520 765 L600 815 L680 765 Z"/>
+    </g>
+  </g>
+  <text x="600" y="1095" text-anchor="middle" font-family="Arial, sans-serif" font-size="66" font-weight="700" fill="#1f2937" letter-spacing="3">GLOBAL FLAVORS</text>
+</svg>

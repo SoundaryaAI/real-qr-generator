@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#f4f1eb"/>
+  <g>
+    <rect x="110" y="140" width="980" height="980" rx="42" fill="#0b0b0b" stroke="#d4b16a" stroke-width="22"/>
+    <rect x="250" y="280" width="700" height="700" rx="26" fill="#f5f5f0" stroke="#d4b16a" stroke-width="18"/>
+    <g fill="none" stroke="#d4b16a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M200 255 C210 130, 298 96, 363 134 C426 170, 430 230, 430 318 L430 400 C430 462, 392 505, 344 505 C294 505, 264 470, 264 420 L264 328 C264 252, 238 198, 200 255 Z"/>
+      <path d="M1000 255 C990 130, 902 96, 837 134 C774 170, 770 230, 770 318 L770 400 C770 462, 808 505, 856 505 C906 505, 936 470, 936 420 L936 328 C936 252, 962 198, 1000 255 Z"/>
+      <path d="M320 816 C350 710, 430 670, 495 685 C546 698, 574 728, 585 799 C595 864, 534 918, 472 918 C389 918, 337 874, 320 816 Z"/>
+      <path d="M880 816 C850 710, 770 670, 705 685 C654 698, 626 728, 615 799 C605 864, 666 918, 728 918 C811 918, 863 874, 880 816 Z"/>
+      <path d="M430 255 C500 200, 700 200, 770 255"/>
+      <path d="M465 255 L465 920 M735 255 L735 920"/>
+      <path d="M310 330 L890 330 M310 870 L890 870"/>
+      <path d="M520 610 C540 575, 570 540, 600 540 C630 540, 660 575, 680 610"/>
+    </g>
+  </g>
+  <text x="600" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="700" fill="#111111" letter-spacing="3">FINE DINING</text>
+</svg>

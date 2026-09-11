@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#e8edf1"/>
+  <g>
+    <rect x="150" y="180" width="900" height="900" rx="30" fill="#eef3f5" stroke="#314a5e" stroke-width="18"/>
+    <circle cx="600" cy="630" r="290" fill="none" stroke="#314a5e" stroke-width="12"/>
+    <g fill="none" stroke="#314a5e" stroke-width="8">
+      <path d="M600 330 L600 930 M310 630 L890 630 M400 430 Q600 520 800 430 M400 830 Q600 740 800 830"/>
+      <path d="M370 380 C450 470, 500 540, 600 630 C700 540, 750 470, 830 380"/>
+      <path d="M380 870 C470 790, 520 720, 600 630 C680 720, 730 790, 820 870"/>
+      <path d="M458 410 L742 410 M430 850 L770 850"/>
+      <path d="M430 510 L770 510 M430 750 L770 750"/>
+      <path d="M320 560 L880 560 M320 700 L880 700"/>
+    </g>
+    <rect x="350" y="350" width="500" height="520" rx="18" fill="#f3f5f7" stroke="#314a5e" stroke-width="12"/>
+  </g>
+  <text x="600" y="1085" text-anchor="middle" font-family="Arial, sans-serif" font-size="66" font-weight="700" fill="#314a5e" letter-spacing="3">GLOBAL BUSINESS</text>
+</svg>

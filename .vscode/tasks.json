@@ -1,0 +1,20 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start RealQR development server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev",
+				"--",
+				"-p",
+				"3005"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

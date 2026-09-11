@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#f2f2f0"/>
+  <g transform="translate(0,0)">
+    <rect x="90" y="100" width="1020" height="1020" rx="60" fill="#dfe9ef" stroke="#1f3b5c" stroke-width="26"/>
+    <rect x="260" y="270" width="680" height="680" rx="26" fill="#f3f6f8" stroke="#1f3b5c" stroke-width="16"/>
+    <g fill="none" stroke="#1f3b5c" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M235 295 C159 295, 145 353, 145 433 L145 650 C145 750, 200 810, 280 810"/>
+      <path d="M965 295 C1041 295, 1055 353, 1055 433 L1055 650 C1055 750, 1000 810, 920 810"/>
+      <path d="M235 905 C159 905, 145 847, 145 767 L145 550 C145 450, 200 390, 280 390"/>
+      <path d="M965 905 C1041 905, 1055 847, 1055 767 L1055 550 C1055 450, 1000 390, 920 390"/>
+      <path d="M195 470 L220 470 L220 590 L195 590"/>
+      <path d="M1005 470 L980 470 L980 590 L1005 590"/>
+      <path d="M470 220 L470 260 M730 220 L730 260"/>
+      <path d="M470 980 L470 940 M730 980 L730 940"/>
+      <path d="M310 204 L350 149 L390 204"/>
+      <path d="M810 204 L770 149 L730 204"/>
+      <path d="M310 996 L350 1051 L390 996"/>
+      <path d="M810 996 L770 1051 L730 996"/>
+      <g opacity="0.8">
+        <path d="M260 265 L300 222 L340 265 L300 308 Z" fill="none"/>
+        <path d="M860 265 L900 222 L940 265 L900 308 Z" fill="none"/>
+        <path d="M260 935 L300 978 L340 935 L300 892 Z" fill="none"/>
+        <path d="M860 935 L900 978 L940 935 L900 892 Z" fill="none"/>
+      </g>
+    </g>
+    <g fill="#f5f8fb">
+      <circle cx="330" cy="600" r="24"/>
+      <circle cx="870" cy="600" r="24"/>
+      <circle cx="580" cy="360" r="24"/>
+      <circle cx="580" cy="840" r="24"/>
+    </g>
+  </g>
+  <text x="600" y="1120" text-anchor="middle" font-family="Arial, sans-serif" font-size="70" font-weight="700" fill="#1d3557" letter-spacing="4">CONSULTANT</text>
+</svg>

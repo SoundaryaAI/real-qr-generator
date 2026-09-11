@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#eef5f8"/>
+  <g>
+    <rect x="160" y="160" width="880" height="880" rx="30" fill="#b8d4e6" stroke="#1d3557" stroke-width="20"/>
+    <rect x="320" y="290" width="560" height="560" rx="25" fill="#edf6fb" stroke="#1d3557" stroke-width="12"/>
+    <g fill="none" stroke="#1d3557" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M340 620 L860 620 M600 360 L600 880"/>
+      <path d="M500 370 C500 310, 540 270, 600 270 C660 270, 700 310, 700 370 L700 500 L830 500 L830 620 L700 620 L700 750 L600 750 L600 620 L470 620 L470 500 L600 500 L600 370"/>
+      <path d="M430 450 L770 450 M430 780 L770 780"/>
+      <path d="M450 340 L510 340 M690 340 L750 340"/>
+      <path d="M430 790 L770 790 M430 840 L770 840"/>
+    </g>
+    <g fill="#d9ecf8">
+      <circle cx="600" cy="570" r="40"/>
+    </g>
+  </g>
+  <text x="600" y="1080" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="700" fill="#1d3557" letter-spacing="4">MEDICINE</text>
+</svg>
