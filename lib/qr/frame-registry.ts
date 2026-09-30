@@ -122,9 +122,14 @@ const standard = (
 /** All built-in frame presets have been removed. Only the no-frame option remains available. */
 export const PREMADE_TEMPLATES: FrameDefinition[] = [];
 
-/** Standard structural frames — clean layouts without heavy decoration */
+/** Standard structural frames — clean layouts matching ME-QR style */
 export const STANDARD_FRAMES: FrameDefinition[] = [
-  standard("std-none", "None", "none", "plain", "#64748b", ""),
+  standard("std-none", "No Frame", "none", "plain", "#64748b", ""),
+  standard("bottom-banner", "Bottom Banner", "bottom-banner", "plain", "#0f172a", "SCAN ME"),
+  standard("top-banner", "Top Banner", "top-banner", "plain", "#0f172a", "SCAN ME"),
+  standard("ticket", "Ticket / Pass", "ticket", "plain", "#dc2626", "SPECIAL PASS"),
+  standard("badge", "Badge Card", "badge", "plain", "#4f46e5", "SCAN ME"),
+  standard("border-only", "Border Only", "border-only", "plain", "#0f172a", ""),
 ];
 
 export const ALL_FRAMES: FrameDefinition[] = [...PREMADE_TEMPLATES, ...STANDARD_FRAMES];
@@ -147,8 +152,19 @@ export function getFrameDefinition(frameId: string): FrameDefinition | undefined
 }
 
 export function getFrameLayout(frameId: string): FrameLayout {
-  if (frameId === "none") return "none";
-  if (frameId.startsWith("travel-") || frameId.startsWith("food-") || frameId.startsWith("halloween-") || frameId.startsWith("valentine-") || frameId.startsWith("beauty-")) {
+  if (frameId === "none" || frameId === "std-none") return "none";
+  if (frameId === "bottom-banner" || frameId === "std-bottom") return "bottom-banner";
+  if (frameId === "top-banner" || frameId === "std-top") return "top-banner";
+  if (frameId === "ticket" || frameId === "std-ticket") return "ticket";
+  if (frameId === "badge" || frameId === "std-badge") return "badge";
+  if (frameId === "border-only" || frameId === "std-border") return "border-only";
+  if (
+    frameId.startsWith("travel-") ||
+    frameId.startsWith("food-") ||
+    frameId.startsWith("halloween-") ||
+    frameId.startsWith("valentine-") ||
+    frameId.startsWith("beauty-")
+  ) {
     return "border-only";
   }
   return getFrameDefinition(frameId)?.layout ?? "bottom-banner";

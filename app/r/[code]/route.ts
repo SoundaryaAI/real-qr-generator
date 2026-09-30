@@ -12,9 +12,9 @@ export const runtime = "nodejs";
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { code: string } }
+  { params }: { params: Promise<{ code: string }> }
 ) {
-  const code = params.code;
+  const { code } = await params;
 
   // 1. Extract Device, OS, Browser
   const userAgent = request.headers.get("user-agent") || "";

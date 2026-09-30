@@ -768,25 +768,51 @@ export function FramePanel({ design, onChange }: StyleProps) {
         Custom Frames
       </h3>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-        {STANDARD_FRAMES.slice(0, 4).map((item) => {
-          const isSelected = design.frameStyle === item.id || (item.id === "std-none" && design.frameStyle === "none");
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+        {STANDARD_FRAMES.map((item) => {
+          const isSelected =
+            design.frameStyle === item.id ||
+            design.frameStyle === item.layout ||
+            (item.id === "std-none" && design.frameStyle === "none");
           return (
             <FrameTile
               key={item.id}
               label={item.name}
               isSelected={isSelected}
-              onClick={() => onChange({
-                ...design,
-                frameStyle: item.id === "std-none" ? "none" : item.id,
-                frameText: item.defaultText,
-                frameColor: item.defaultColor,
-                frameTextColor: item.defaultTextColor,
-              })}
+              onClick={() =>
+                onChange({
+                  ...design,
+                  frameStyle: item.id === "std-none" ? "none" : item.layout,
+                  frameText: design.frameText || item.defaultText || "SCAN ME",
+                  frameColor:
+                    design.frameColor && design.frameColor !== "#0f172a"
+                      ? design.frameColor
+                      : item.defaultColor,
+                  frameTextColor: item.defaultTextColor,
+                })
+              }
             >
-              <div className="w-12 h-12 rounded-lg border-2 flex flex-col items-center justify-center gap-1" style={{ borderColor: item.defaultColor }}>
-                <span className="w-7 h-7 border border-slate-400 rounded-sm" />
-                {item.layout !== "none" && <span className="w-8 h-1.5 rounded-full" style={{ backgroundColor: item.defaultColor }} />}
+              <div
+                className="w-11 h-11 rounded-lg border-2 flex flex-col items-center justify-center gap-0.5"
+                style={{ borderColor: item.defaultColor }}
+              >
+                {item.layout === "top-banner" && (
+                  <span
+                    className="w-7 h-1.5 rounded-full"
+                    style={{ backgroundColor: item.defaultColor }}
+                  />
+                )}
+                <span
+                  className={`w-5 h-5 border ${
+                    item.layout === "ticket" ? "border-dashed" : ""
+                  } border-slate-400 rounded-sm`}
+                />
+                {(item.layout === "bottom-banner" || item.layout === "badge") && (
+                  <span
+                    className="w-7 h-1.5 rounded-full"
+                    style={{ backgroundColor: item.defaultColor }}
+                  />
+                )}
               </div>
             </FrameTile>
           );
