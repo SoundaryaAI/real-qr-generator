@@ -28,19 +28,31 @@ import {
   Tag,
 } from "lucide-react";
 
+import { useAuth } from "@/lib/supabase/auth-context";
+import {
+  getCloudQrs,
+  saveCloudQr,
+  deleteCloudQr,
+  logCloudScan,
+} from "@/lib/supabase/cloud-store";
+
 export default function DashboardPage() {
+  const { user, loading: authLoading } = useAuth();
   const [qrs, setQrs] = useState<QRCodeRecord[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterType, setFilterType] = useState<"all" | "dynamic" | "static">("all");
   const [editingQr, setEditingQr] = useState<QRCodeRecord | null>(null);
   const [newDestinationUrl, setNewDestinationUrl] = useState("");
   const [simulatingId, setSimulatingId] = useState<string | null>(null);
 
-  // Load stored QRs
-  useEffect(() => {
-    let list = getStoredQrs();
-    if (list.length === 0) {
-      // Seed sample QR codes if empty so the intern can see a populated dashboard
+  const userId = user?.id ?? null;
+
+  const loadQrs = async () => {
+    setLoading(true);
+    let list = await getCloudQrs(userId);
+    if (list.length === 0 && !userId) {
+      // Seed sample QR codes if local storage is empty for guests
       const samples: QRCodeRecord[] = [
         {
           id: "qr_demo_1",
@@ -85,45 +97,56 @@ export default function DashboardPage() {
       list = samples;
     }
     setQrs(list);
-  }, []);
+    setLoading(false);
+  };
 
-  const refreshList = () => {
-    setQrs(getStoredQrs());
+  useEffect(() => {
+    if (!authLoading) {
+      loadQrs();
+    }
+  }, [userId, authLoading]);
+
+  const refreshList = async () => {
+    const list = await getCloudQrs(userId);
+    setQrs(list);
   };
 
   // Toggle QR Active State
-  const toggleActive = (qr: QRCodeRecord) => {
+  const toggleActive = async (qr: QRCodeRecord) => {
     const updated = { ...qr, isActive: !qr.isActive };
-    saveQr(updated);
-    refreshList();
+    await saveCloudQr(updated, userId);
+    await refreshList();
   };
 
   // Delete QR
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to delete this QR code?")) {
-      deleteQr(id);
-      refreshList();
+      await deleteCloudQr(id, userId);
+      await refreshList();
     }
   };
 
   // Save edited destination URL
-  const handleSaveDestination = () => {
+  const handleSaveDestination = async () => {
     if (!editingQr) return;
     const updated = {
       ...editingQr,
       destinationUrl: newDestinationUrl,
       rawPayload: newDestinationUrl,
     };
-    saveQr(updated);
+    await saveCloudQr(updated, userId);
     setEditingQr(null);
-    refreshList();
+    await refreshList();
   };
 
   // Trigger Mock Real-time Scan
-  const handleSimulateScan = (id: string) => {
+  const handleSimulateScan = async (id: string) => {
     setSimulatingId(id);
-    logMockScan(id);
-    refreshList();
+    const mockEvent = logMockScan(id);
+    if (userId) {
+      await logCloudScan(mockEvent);
+    }
+    await refreshList();
     setTimeout(() => setSimulatingId(null), 1000);
   };
 

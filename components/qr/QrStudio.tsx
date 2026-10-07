@@ -9,6 +9,8 @@ import {
 } from "@/types/qr";
 import { formatPayload } from "@/lib/qr/formatters";
 import { DEFAULT_DESIGN, saveQr, CURATED_TEMPLATES } from "@/lib/storage/qr-store";
+import { useAuth } from "@/lib/supabase/auth-context";
+import { saveCloudQr } from "@/lib/supabase/cloud-store";
 import { ContentFormManager, CONTENT_TYPE_CONFIG } from "./ContentTabs";
 import {
   ColorPanel,
@@ -74,8 +76,10 @@ export function QrStudio() {
     setContent((prev) => ({ ...prev, type }));
   };
 
-  // Save QR to local storage / dashboard
-  const handleSaveQr = () => {
+  const { user } = useAuth();
+
+  // Save QR to cloud / local storage / dashboard
+  const handleSaveQr = async () => {
     const newRecord: QRCodeRecord = {
       id: `qr_${Date.now()}`,
       title: qrTitle || "Untitled QR",
@@ -90,7 +94,7 @@ export function QrStudio() {
       scanCount: 0,
       isActive: true,
     };
-    saveQr(newRecord);
+    await saveCloudQr(newRecord, user?.id ?? null);
   };
 
   // Apply a template preset

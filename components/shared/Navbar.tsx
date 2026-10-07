@@ -1,20 +1,47 @@
 "use client";
 
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { QrCode, BarChart3, LayoutGrid, Camera, Layers, Github } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { QrCode, BarChart3, LayoutGrid, Camera, Layers, LogIn, LogOut, User, ChevronDown } from "lucide-react";
+import { useAuth } from "@/lib/supabase/auth-context";
 
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { user, loading, signOut } = useAuth();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
 
   const links = [
-    { href: "/", label: "Studio Generator", icon: QrCode },
+    { href: "/", label: "Studio", icon: QrCode },
     { href: "/templates", label: "Templates", icon: LayoutGrid },
-    { href: "/dashboard", label: "Dashboard & Analytics", icon: BarChart3 },
+    { href: "/dashboard", label: "Dashboard", icon: BarChart3 },
     { href: "/bulk", label: "Bulk CSV", icon: Layers },
-    { href: "/scan", label: "Camera Scanner", icon: Camera },
+    { href: "/scan", label: "Scanner", icon: Camera },
   ];
+
+  const handleSignOut = async () => {
+    setDropdownOpen(false);
+    await signOut();
+    router.push("/");
+  };
+
+  // User avatar initials
+  const initials = user?.user_metadata?.full_name
+    ? (user.user_metadata.full_name as string).split(" ").map((w: string) => w[0]).join("").toUpperCase().slice(0, 2)
+    : user?.email?.[0]?.toUpperCase() ?? "?";
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800">
@@ -56,14 +83,68 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Action Controls */}
+        {/* Auth Controls */}
         <div className="flex items-center gap-2.5">
-          <Link
-            href="/dashboard"
-            className="px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 hover:opacity-90 transition-all shadow-sm"
-          >
-            My QR Codes
-          </Link>
+          {loading ? (
+            <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+          ) : user ? (
+            // ── Signed-in avatar + dropdown ──
+            <div className="relative" ref={dropdownRef}>
+              <button
+                type="button"
+                onClick={() => setDropdownOpen((o) => !o)}
+                className="flex items-center gap-2 px-2 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+              >
+                <div className="w-8 h-8 rounded-full bg-brand-600 flex items-center justify-center text-white text-xs font-black shadow">
+                  {user.user_metadata?.avatar_url ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={user.user_metadata.avatar_url as string}
+                      alt="avatar"
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                  ) : initials}
+                </div>
+                <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
+              </button>
+
+              {dropdownOpen && (
+                <div className="absolute right-0 top-11 w-52 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-xl py-1.5 z-50">
+                  <div className="px-3.5 py-2 border-b border-slate-100 dark:border-slate-800 mb-1">
+                    <p className="text-xs font-bold text-slate-900 dark:text-white truncate">
+                      {(user.user_metadata?.full_name as string) || "My Account"}
+                    </p>
+                    <p className="text-[11px] text-slate-500 truncate">{user.email}</p>
+                  </div>
+                  <Link
+                    href="/dashboard"
+                    onClick={() => setDropdownOpen(false)}
+                    className="flex items-center gap-2 w-full px-3.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                  >
+                    <BarChart3 className="w-3.5 h-3.5" />
+                    My QR Dashboard
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={handleSignOut}
+                    className="flex items-center gap-2 w-full px-3.5 py-2 text-xs font-semibold text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors rounded-b-2xl"
+                  >
+                    <LogOut className="w-3.5 h-3.5" />
+                    Sign Out
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            // ── Guest sign-in button ──
+            <Link
+              href="/auth"
+              className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-xl bg-brand-600 text-white hover:bg-brand-700 transition-all shadow-sm shadow-brand-600/20"
+            >
+              <LogIn className="w-3.5 h-3.5" />
+              Sign In
+            </Link>
+          )}
         </div>
       </div>
     </header>
